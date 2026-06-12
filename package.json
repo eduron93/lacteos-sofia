@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node backend/server.js",
-    "setup-db": "node backend/setup-db.js"
+    "setup-db": "node backend/setup-db.js",
+    "build": "node backend/setup-db.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
