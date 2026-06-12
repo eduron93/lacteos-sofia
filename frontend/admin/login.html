@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Lácteos Sofía</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:   #2E8B47;
+      --green-d: #1A5C2A;
+      --green-l: #D6EFD8;
+      --gold:    #C9A84C;
+      --cream:   #FDF8EE;
+      --text:    #1C2B1A;
+      --red:     #e53935;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--green-d) 0%, var(--green) 60%, #5CB87A 100%);
+      font-family: 'Nunito', sans-serif;
+    }
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+    }
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .logo-icon { font-size: 3rem; }
+    .logo-name {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--green-d);
+      margin-top: 8px;
+    }
+    .logo-sub {
+      font-size: 0.82rem;
+      color: #888;
+      margin-top: 2px;
+      letter-spacing: .04em;
+    }
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .form-group { margin-bottom: 18px; }
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #555;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    input[type=password] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #E0E0E0;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Nunito', sans-serif;
+      outline: none;
+      transition: border-color .2s;
+    }
+    input[type=password]:focus { border-color: var(--green); }
+    .btn-login {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--green-d), var(--green));
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-login:hover { opacity: .9; transform: translateY(-1px); }
+    .btn-login:active { transform: translateY(0); }
+    .error-msg {
+      display: none;
+      background: #FFEBEE;
+      color: var(--red);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-top: 14px;
+      text-align: center;
+    }
+    .error-msg.show { display: block; }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #888;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--green); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo-wrap">
+      <div class="logo-icon">🥛</div>
+      <span class="logo-name">Lácteos Sofía</span>
+      <span class="logo-sub">Panel de Administración</span>
+    </div>
+    <h2>Iniciar sesión</h2>
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" />
+    </div>
+    <button class="btn-login" onclick="doLogin()">Ingresar al Panel</button>
+    <div class="error-msg" id="errorMsg">Contraseña incorrecta. Intente de nuevo.</div>
+    <a href="../index.html" class="back-link">← Volver al sitio</a>
+  </div>
+
+  <script>
+    // Si ya hay token, ir directo al dashboard
+    if (localStorage.getItem('ls_token')) window.location.href = 'dashboard.html';
+
+    async function doLogin() {
+      const pwd    = document.getElementById('password').value;
+      const btn    = document.querySelector('.btn-login');
+      const errEl  = document.getElementById('errorMsg');
+      if (!pwd) return;
+
+      btn.textContent = 'Verificando…';
+      btn.disabled = true;
+      errEl.classList.remove('show');
+
+      try {
+        const res  = await fetch('/api/auth/login', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ password: pwd }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Error');
+        localStorage.setItem('ls_token', data.token);
+        window.location.href = 'dashboard.html';
+      } catch (err) {
+        errEl.textContent = err.message === 'Contraseña incorrecta'
+          ? 'Contraseña incorrecta. Intente de nuevo.'
+          : 'No se pudo conectar al servidor.';
+        errEl.classList.add('show');
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+        btn.textContent = 'Ingresar al Panel';
+        btn.disabled = false;
+      }
+    }
+
+    document.getElementById('password').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doLogin();
+      document.getElementById('errorMsg').classList.remove('show');
+    });
+  </script>
+</body>
+</html>

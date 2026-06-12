@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Lácteos Sofía – Frescura y calidad para tu familia</title>
+  <meta name="description" id="pageDesc" content="Lácteos Sofía: productores artesanales de leche fresca, quesos, mantequilla, yogurt y más. Calidad y tradición en cada producto." />
+  <meta name="keywords" content="lácteos, queso fresco, leche, mantequilla, yogurt, quesillo, crema, requesón, productos artesanales" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">🥛</div>
+        <div class="logo-text">
+          <!-- EDITABLE: Nombre de la empresa -->
+          <span class="logo-name" data-bind="nombre">Lácteos Sofía</span>
+          <span class="logo-tag">Desde 1998 · Calidad Artesanal</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#promociones">Promociones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="cart-nav-btn" onclick="toggleCart()" title="Ver carrito">
+        🛒 <span class="cart-nav-count" id="cartNavCount">0</span>
+      </button>
+      <a href="#contacto" class="btn btn-primary nav-cta" style="padding:10px 22px;font-size:0.9rem;">Pedir Ahora</a>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
+  <ul class="mobile-nav-links">
+    <li><a href="#nosotros" onclick="toggleMenu()">Nosotros</a></li>
+    <li><a href="#productos" onclick="toggleMenu()">Productos</a></li>
+    <li><a href="#beneficios" onclick="toggleMenu()">Beneficios</a></li>
+    <li><a href="#proceso" onclick="toggleMenu()">Proceso</a></li>
+    <li><a href="#galeria" onclick="toggleMenu()">Galería</a></li>
+    <li><a href="#promociones" onclick="toggleMenu()">Promociones</a></li>
+    <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="btn btn-primary" style="margin-top:28px;width:100%;justify-content:center;" onclick="toggleMenu()">Pedir Ahora 🛒</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-dots">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">🌿 100% Natural · Producción Local</div>
+      <!-- EDITABLE: Título y subtítulo Hero -->
+      <h1 class="hero-title">La <em>frescura</em> y calidad que tu familia merece</h1>
+      <p class="hero-subtitle">Elaboramos productos lácteos con los más altos estándares de calidad y tradición artesanal, directo del campo a tu mesa.</p>
+      <div class="hero-actions">
+        <a href="#productos" class="btn btn-primary">Ver Productos 🧀</a>
+        <a href="#contacto" class="btn btn-outline">Contáctanos</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">25+</span>
+          <span class="hero-stat-label">Años de experiencia</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">9</span>
+          <span class="hero-stat-label">Productos artesanales</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">2K+</span>
+          <span class="hero-stat-label">Clientes satisfechos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ========== MARQUEE ========== -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <!-- duplicated for infinite loop -->
+    <span class="marquee-item"><span class="dot"></span> Queso Artesanal</span>
+    <span class="marquee-item"><span class="dot"></span> Mantequilla Natural</span>
+    <span class="marquee-item"><span class="dot"></span> Yogurt Premium</span>
+    <span class="marquee-item"><span class="dot"></span> Crema Especial</span>
+    <span class="marquee-item"><span class="dot"></span> Sin Conservantes</span>
+    <span class="marquee-item"><span class="dot"></span> Producción Local</span>
+    <span class="marquee-item"><span class="dot"></span> 100% Natural</span>
+    <span class="marquee-item"><span class="dot"></span> Leche Fresca</span>
+    <span class="marquee-item"><span class="dot"></span> Queso Artesanal</span>
+    <span class="marquee-item"><span class="dot"></span> Mantequilla Natural</span>
+    <span class="marquee-item"><span class="dot"></span> Yogurt Premium</span>
+    <span class="marquee-item"><span class="dot"></span> Crema Especial</span>
+    <span class="marquee-item"><span class="dot"></span> Sin Conservantes</span>
+    <span class="marquee-item"><span class="dot"></span> Producción Local</span>
+    <span class="marquee-item"><span class="dot"></span> 100% Natural</span>
+  </div>
+</div>
+
+<!-- ========== ACERCA DE ========== -->
+<section class="section" id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal">
+        <img src="assets/Logo.png" alt="Finca lechera Lácteos Sofía" loading="lazy" />
+        <div class="about-badge-float">
+          <div class="about-badge-icon">🏆</div>
+          <div>
+            <div class="about-badge-num">25+</div>
+            <div class="about-badge-text">Años de tradición</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-content reveal reveal-delay-2">
+        <span class="section-tag">Nuestra Historia</span>
+        <h2 class="section-title">Tradición que se<br/>convierte en sabor</h2>
+        <!-- EDITABLE: Historia de la empresa -->
+        <!--<p style="color:var(--text-light);margin-bottom:20px;">Desde 1998, <strong>Lácteos Sofía</strong> nació como un sueño familiar en el corazón de las tierras verdes del valle. Comenzamos con un pequeño hato de vacas y una receta transmitida de generación en generación, con el firme propósito de llevar productos frescos y naturales a cada hogar.</p> -->
+        <p style="color:var(--text-light);">Hoy somos una empresa consolidada, con tecnología moderna sin perder el alma artesanal. Cada producto que elaboramos lleva consigo el compromiso de calidad, higiene y el amor genuino por lo que hacemos.</p>
+        <div class="about-mv">
+          <div class="mv-card">
+            <h4>🎯 Nuestra Misión</h4>
+            <p id="textoMision">Producir lácteos de la más alta calidad, respetando la naturaleza y garantizando nutrición real a cada familia.</p>
+          </div>
+          <div class="mv-card">
+            <h4>🌟 Nuestra Visión</h4>
+            <p id="textoVision">Ser la marca de lácteos más confiable y querida de la región, expandiendo el sabor del campo a todo el país.</p>
+          </div>
+        </div>
+        <div class="about-commitment">
+          <span>✅</span>
+          <p><strong>Compromiso con la calidad:</strong> Cada lote pasa por estrictos controles antes de llegar a tu mesa. Sin conservantes artificiales, sin adulteraciones — solo lo mejor de la naturaleza.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRODUCTOS ========== -->
+<section class="section section--alt" id="productos">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">Catálogo</span>
+      <h2 class="section-title">Nuestros Productos Destacados</h2>
+      <p class="section-subtitle">Elaborados con leche 100% fresca de nuestras propias fincas, sin aditivos ni conservantes artificiales.</p>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- Renderizado dinámico desde main.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ========== BENEFITS ========== -->
+<section class="section" id="beneficios">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">¿Por qué elegirnos?</span>
+      <h2 class="section-title">Nuestras ventajas</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal reveal-delay-1">
+        <div class="benefit-icon">🌿</div>
+        <h3 class="benefit-title">100% Natural</h3>
+        <p class="benefit-text">Sin conservantes, colorantes ni aditivos. Solo lo que la naturaleza nos da.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="benefit-icon">🏡</div>
+        <h3 class="benefit-title">Producción Local</h3>
+        <p class="benefit-text">Apoyamos la economía de la región y garantizamos frescura extrema.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="benefit-icon">❄️</div>
+        <h3 class="benefit-title">Máxima Frescura</h3>
+        <p class="benefit-text">Cadena de frío ininterrumpida desde el ordeño hasta tu puerta.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="benefit-icon">🔬</div>
+        <h3 class="benefit-title">Control de Calidad</h3>
+        <p class="benefit-text">Cada lote es analizado en laboratorio antes de salir a distribución.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="benefit-icon">🚚</div>
+        <h3 class="benefit-title">Entregas Rápidas</h3>
+        <p class="benefit-text">Distribución diaria para que siempre tengas producto fresco disponible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROCESS ========== -->
+<section class="section section--alt" id="proceso">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">Cómo lo hacemos</span>
+      <h2 class="section-title">Del campo a tu mesa</h2>
+      <p class="section-subtitle">Un proceso riguroso que garantiza la calidad y frescura en cada producto.</p>
+    </div>
+    <div class="process-wrap">
+      <div class="process-line"></div>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">1</div>
+          <span class="process-icon" style="margin-top:16px">🐄</span>
+          <h4 class="process-title">Recolección de Leche</h4>
+          <p class="process-desc">Ordeño higiénico a las 4am con equipo certificado. La leche va directo a tanques de frío.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">2</div>
+          <span class="process-icon" style="margin-top:16px">⚙️</span>
+          <h4 class="process-title">Procesamiento</h4>
+          <p class="process-desc">Pasteurización y homogeneización a temperatura controlada, preservando nutrientes esenciales.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">3</div>
+          <span class="process-icon" style="margin-top:16px">🧑‍🍳</span>
+          <h4 class="process-title">Elaboración</h4>
+          <p class="process-desc">Nuestros maestros queseros y artesanos dan forma a cada producto con técnicas tradicionales.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">4</div>
+          <span class="process-icon" style="margin-top:16px">🔬</span>
+          <h4 class="process-title">Control de Calidad</h4>
+          <p class="process-desc">Muestreo y análisis microbiológico. Solo los lotes aprobados avanzan a distribución.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">5</div>
+          <span class="process-icon" style="margin-top:16px">📦</span>
+          <h4 class="process-title">Distribución</h4>
+          <p class="process-desc">Vehículos refrigerados llevan los productos frescos a puntos de venta y directamente a domicilio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="section" id="testimonios">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">Opiniones</span>
+      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    </div>
+    <div class="testimonials-slider reveal">
+      <div class="testimonials-track" id="testimonialTrack">
+        <!-- EDITABLE: Testimonios -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"El queso fresco de Lácteos Sofía es el mejor que he probado en mi vida. Se nota que es artesanal y sin conservantes. Mi familia no quiere otro."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👩</div>
+            <div>
+              <div class="testimonial-name">María José Pacheco</div>
+              <div class="testimonial-role">Cliente desde 2019 · Tegucigalpa</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Tengo una pequeña pupusería y los lácteos Sofía son parte fundamental de mi negocio. La crema y el quesillo son excepcionales. Mis clientes los piden específicamente."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👨</div>
+            <div>
+              <div class="testimonial-name">Carlos Rodríguez</div>
+              <div class="testimonial-role">Dueño de restaurante · San Pedro Sula</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"El yogurt natural ayudó mucho con mis problemas digestivos. Es cremoso, sin azúcar y llega siempre fresco. ¡La entrega a domicilio es un plus increíble!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👩‍⚕️</div>
+            <div>
+              <div class="testimonial-name">Dr. Ana Triminio</div>
+              <div class="testimonial-role">Nutricionista · Comayagüela</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"La mantequilla artesanal tiene un sabor que te transporta a la abuelita. No hay comparación con las industriales. Ya la recomendé con toda mi familia y amigos."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👴</div>
+            <div>
+              <div class="testimonial-name">Don Roberto Mejía</div>
+              <div class="testimonial-role">Cliente leal · La Esperanza</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Compramos el combo familiar cada semana. El precio es justo y la calidad no falla nunca. Los niños esperan el yogurt de fresa como si fuera un dulce especial."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👩‍👧</div>
+            <div>
+              <div class="testimonial-name">Familia López Andino</div>
+              <div class="testimonial-role">Clientes semanales · Danlí</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Negocié una distribución al por mayor y el equipo fue muy profesional. Precios justos y excelente puntualidad en las entregas. Crecimos juntos."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🧑‍💼</div>
+            <div>
+              <div class="testimonial-name">Supermercado El Buen Precio</div>
+              <div class="testimonial-role">Distribuidor mayorista</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="slider-btn" onclick="slideTestimonials(-1)">←</button>
+      <button class="slider-btn" onclick="slideTestimonials(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section class="section section--alt" id="galeria">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">Galería</span>
+      <h2 class="section-title">El arte detrás de cada producto</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="assets/QuesoSeco.png" alt="Ganado lechero" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/QuesoFresco.png" alt="Quesos artesanales" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/QuesoSemiSeco.png" alt="Leche fresca" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/Quesillo.png" alt="Yogurt fresco" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/MantequillaCrema.png" alt="Mantequilla artesanal" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/Requeson.png" alt="Procesamiento de lácteos" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/Logo.png" alt="Crema fresca" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROMOTIONS ========== -->
+<section class="section" id="promociones" style="display:none">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">Ofertas Especiales</span>
+      <h2 class="section-title">Promociones del mes</h2>
+      <p class="section-subtitle">Aprovecha nuestras ofertas y lleva calidad artesanal a un precio increíble.</p>
+    </div>
+    <div class="promos-grid" id="promosGrid">
+      <!-- Renderizado dinámico desde main.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="section section--alt" id="contacto">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">Contáctanos</span>
+      <h2 class="section-title">¿Listo para pedir?</h2>
+      <p class="section-subtitle">Escríbenos y te atendemos de inmediato. ¡Entregamos a domicilio!</p>
+    </div>
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="reveal">
+        <div class="contact-info-item">
+          <div class="contact-info-icon ci-green">📱</div>
+          <div>
+            <!-- EDITABLE: Teléfono / WhatsApp -->
+            <div class="contact-info-label">WhatsApp & Teléfono</div>
+            <div class="contact-info-value" data-bind="telefono"></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon ci-blue">📧</div>
+          <div>
+            <!-- EDITABLE: Correo -->
+            <div class="contact-info-label">Correo Electrónico</div>
+            <div class="contact-info-value" data-bind="correo"></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon ci-gold">📍</div>
+          <div>
+            <!-- EDITABLE: Dirección -->
+            <div class="contact-info-label">Dirección Física</div>
+            <div class="contact-info-value" data-bind="direccion"></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon ci-green">🕐</div>
+          <div>
+            <!-- EDITABLE: Horarios -->
+            <div class="contact-info-label">Horarios de Atención</div>
+            <div class="contact-info-value" data-bind="horario"></div>
+          </div>
+        </div>
+        <div class="social-links">
+          <!-- EDITABLE: Links redes sociales -->
+          <a href="#" class="social-link sl-whatsapp" id="linkWhatsapp" target="_blank" title="WhatsApp">💬</a>
+          <a href="#" class="social-link sl-facebook" id="linkFacebook" target="_blank" title="Facebook">f</a>
+          <a href="#" class="social-link sl-instagram" id="linkInstagram" target="_blank" title="Instagram">📷</a>
+        </div>
+      </div>
+      <!-- Form -->
+      <div class="contact-form reveal reveal-delay-2">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:28px;color:var(--text-dark)">Envíanos tu pedido</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" placeholder="+504 ···" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" placeholder="tu@correo.com" />
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje / Pedido</label>
+          <textarea id="mensaje" rows="5" placeholder="Descríbenos qué productos deseas y en qué cantidad…"></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;" onclick="submitForm()">
+          Enviar Pedido 🚀
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo logo">
+          <div class="logo-icon">🥛</div>
+          <div class="logo-text">
+            <!-- EDITABLE: Nombre empresa en footer -->
+            <span class="logo-name" data-bind="nombre">Lácteos Sofía</span>
+            <span class="logo-tag" style="color:rgba(255,255,255,0.45)" data-bind="tagline">Calidad Artesanal Desde 1998</span>
+          </div>
+        </div>
+        <p class="footer-about">Somos una empresa familiar dedicada a la producción y comercialización de productos lácteos artesanales de la más alta calidad, llevando lo mejor del campo a tu hogar.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link sl-whatsapp" id="footerLinkWhatsapp" target="_blank">💬</a>
+          <a href="#" class="social-link sl-facebook" id="footerLinkFacebook" target="_blank">f</a>
+          <a href="#" class="social-link sl-instagram" id="footerLinkInstagram" target="_blank">📷</a>
+        </div>
+      </div>
+      <div>
+        <h5>Productos</h5>
+        <ul class="footer-links">
+          <li><a href="#productos">Leche Fresca</a></li>
+          <li><a href="#productos">Queso Seco</a></li>
+          <li><a href="#productos">Queso Fresco</a></li>
+          <li><a href="#productos">Queso Semiseco</a></li>
+          <li><a href="#productos">Quesillo</a></li>
+          <li><a href="#productos">Mantequilla</a></li>
+          <li><a href="#productos">Crema</a></li>
+          <li><a href="#productos">Yogurt</a></li>
+          <li><a href="#productos">Requesón</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Empresa</h5>
+        <ul class="footer-links">
+          <li><a href="#nosotros">Sobre Nosotros</a></li>
+          <li><a href="#proceso">Nuestro Proceso</a></li>
+          <li><a href="#beneficios">Por qué Elegirnos</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#promociones">Promociones</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <div class="footer-contact-item">
+          <span>📱</span><span data-bind="telefono"></span>
+        </div>
+        <div class="footer-contact-item">
+          <span>📧</span><span data-bind="correo"></span>
+        </div>
+        <div class="footer-contact-item">
+          <span>📍</span><span data-bind="direccion"></span>
+        </div>
+        <div class="footer-contact-item">
+          <span>🕐</span><span data-bind="horario"></span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <!-- EDITABLE: Año y nombre empresa en derechos -->
+      <p>© <span id="copyright-year"></span> <span data-bind="nombre">Lácteos Sofía</span>. Todos los derechos reservados.</p>
+      <p>Diseño con ❤️ para el campo hondureño &nbsp;·&nbsp; <a href="admin/login.html" style="color:rgba(255,255,255,.25);font-size:0.75rem;text-decoration:none" title="Administración">⚙ Admin</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== WHATSAPP FLOAT ========== -->
+<!-- EDITABLE: Número WhatsApp flotante -->
+<a class="whatsapp-float" id="waFloat" href="#" target="_blank">
+  💬
+  <span class="whatsapp-tooltip">¡Haz tu pedido ahora!</span>
+</a>
+
+<!-- ========== TOAST ========== -->
+<div class="toast" id="toast"></div>
+
+<!-- ========== CART DRAWER ========== -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-header-left">
+      <span class="cart-header-icon">🛒</span>
+      <div>
+        <h3 class="cart-title">Mi Carrito</h3>
+        <span class="cart-subtitle" id="cartSubtitle">0 productos</span>
+      </div>
+    </div>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+
+  <div class="cart-body" id="cartBody">
+    <!-- Empty state -->
+    <div class="cart-empty" id="cartEmpty">
+      <div class="cart-empty-icon">🧺</div>
+      <p class="cart-empty-title">Tu carrito está vacío</p>
+      <p class="cart-empty-sub">Agrega productos desde el catálogo y aparecerán aquí.</p>
+      <button class="btn btn-primary" style="margin-top:16px" onclick="toggleCart();document.getElementById('productos').scrollIntoView({behavior:'smooth'})">Ver Productos</button>
+    </div>
+    <!-- Items list -->
+    <div class="cart-items" id="cartItems"></div>
+  </div>
+
+  <!-- Cart footer -->
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-summary">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">L. 0.00</span>
+      </div>
+      <div class="cart-summary-row cart-summary-total">
+        <span>Total</span>
+        <span id="cartTotal">L. 0.00</span>
+      </div>
+    </div>
+    <div class="cart-note-wrap">
+      <label for="cartNote" style="font-size:0.82rem;font-weight:700;color:var(--text-mid)">Nota del pedido (opcional)</label>
+      <textarea id="cartNote" rows="2" placeholder="Dirección de entrega, horario preferido…" style="width:100%;margin-top:6px;border:2px solid #E8F0E7;border-radius:10px;padding:10px 12px;font-family:'Nunito',sans-serif;font-size:0.88rem;resize:none;outline:none;background:var(--cream);color:var(--text-dark);"></textarea>
+    </div>
+    <div class="cart-actions">
+      <button class="btn btn-whatsapp" onclick="checkoutWhatsApp()">
+        <span>💬</span> Pedir por WhatsApp
+      </button>
+      <button class="btn btn-clear" onclick="clearCart()">🗑️ Vaciar</button>
+    </div>
+    <p class="cart-disclaimer">Al confirmar, serás redirigido a WhatsApp con el detalle de tu pedido.</p>
+  </div>
+</div>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
