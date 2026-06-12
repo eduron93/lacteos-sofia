@@ -1,15 +1,10 @@
-/**
- * setup-db.js
- * Crea las tablas y carga los datos iniciales.
- * Ejecutar una sola vez: node setup-db.js
- */
 require('dotenv').config();
 const crypto = require('crypto');
 const pool   = require('./db');
 
 const sha256 = (str) => crypto.createHash('sha256').update(str).digest('hex');
 
-async function setup() {
+async function setup(closePool = true) {
   const client = await pool.connect();
   try {
     console.log('Conectando a PostgreSQL…');
@@ -137,15 +132,21 @@ async function setup() {
     }
 
     await client.query('COMMIT');
-    console.log('\n🎉 Base de datos lista. Puedes iniciar el servidor con: npm start');
+    console.log('✅ Base de datos lista.');
   } catch (err) {
     await client.query('ROLLBACK');
-    console.error('❌ Error en setup:', err.message);
-    process.exit(1);
+    console.error('❌ Error en setup DB:', err.message);
+    throw err;
   } finally {
     client.release();
-    await pool.end();
+    if (closePool) await pool.end();
   }
 }
 
-setup();
+// Exportar para uso desde server.js
+module.exports = { run: () => setup(false) };
+
+// Ejecutar directamente si se llama con: node setup-db.js
+if (require.main === module) {
+  setup(true).catch(() => process.exit(1));
+}

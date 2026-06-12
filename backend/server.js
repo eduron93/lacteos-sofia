@@ -53,7 +53,19 @@ app.get('*', (req, res) => {
 
 // ── Iniciar ───────────────────────────────────────────────────────────
 const PORT = parseInt(process.env.PORT) || 3000;
-app.listen(PORT, () => {
-  console.log(`\n🥛 Lácteos Sofía API corriendo en http://localhost:${PORT}`);
-  console.log(`   Panel admin: http://localhost:${PORT}/admin/login.html\n`);
-});
+
+async function startServer() {
+  // Ejecutar setup de DB al arrancar (crea tablas y datos si no existen)
+  try {
+    await require('./setup-db').run();
+  } catch (err) {
+    console.error('Advertencia en setup DB:', err.message);
+  }
+
+  app.listen(PORT, () => {
+    console.log(`\n🥛 Lácteos Sofía API corriendo en http://localhost:${PORT}`);
+    console.log(`   Panel admin: http://localhost:${PORT}/admin/login.html\n`);
+  });
+}
+
+startServer();
